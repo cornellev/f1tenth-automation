@@ -40,7 +40,7 @@ private:
     int brake_mux_idx;
     // ***Add mux index for new planner here***
     // int new_mux_idx;
-    int auto_walk_idx;
+    int auto_walk_mux_idx;
 
     // Mux controller array
     std::vector<bool> mux_controller;
@@ -63,7 +63,7 @@ private:
     std::string nav_key_char;
     // ***Add key char for new planner here***
     // int new_key_char;
-    std::string auto_walk_key_char
+    std::string auto_walk_key_char;
     // Is ebrake on? (not engaged, but on)
     bool safety_on;
 
@@ -120,7 +120,7 @@ public:
         n.getParam("nav_mux_idx", nav_mux_idx);
         // ***Add mux index for new planner here***
         // n.getParam("new_mux_idx", new_mux_idx);
-        n.getParam("auto_walk_mux_idx", auto_walk_mux_idx)
+        n.getParam("auto_walk_mux_idx", auto_walk_mux_idx);
 
         // Get button indices
         n.getParam("joy_button_idx", joy_button_idx);
@@ -130,7 +130,7 @@ public:
         n.getParam("nav_button_idx", nav_button_idx);
         // ***Add button index for new planner here***
         // n.getParam("new_button_idx", new_button_idx);
-        n.getParam("auto_walk_button_idx", auto_walk_button_idx)
+        n.getParam("auto_walk_button_idx", auto_walk_button_idx);
 
         // Get key indices
         n.getParam("joy_key_char", joy_key_char);
@@ -140,7 +140,7 @@ public:
         n.getParam("nav_key_char", nav_key_char);
         // ***Add key char for new planner here***
         // n.getParam("new_key_char", new_key_char);
-        n.getParam("auto_walk_key_char", auto_walk_key_char)
+        n.getParam("auto_walk_key_char", auto_walk_key_char);
 
         // Initialize the mux controller 
         n.getParam("mux_size", mux_size);
@@ -313,7 +313,7 @@ public:
             // random walker
             toggle_mux(random_walker_mux_idx, "Random Walker");
         } else if (msg.buttons[auto_walk_button_idx]) {
-            toogle_mux(auto_walk_mux_idx, "Auto Walker")
+            toggle_mux(auto_walk_mux_idx, "Auto Walker");
         } else if (msg.buttons[nav_button_idx]) {
             // nav
             toggle_mux(nav_mux_idx, "Navigation");
@@ -349,7 +349,6 @@ public:
             toggle_mux(random_walker_mux_idx, "Random Walker");
         } else if (msg.data == auto_walk_key_char){
             toggle_mux(auto_walk_mux_idx, "Auto Walker");
-        } else if (ms)
         } else if (msg.data == nav_key_char) {
             // nav
             toggle_mux(nav_mux_idx, "Navigation");
