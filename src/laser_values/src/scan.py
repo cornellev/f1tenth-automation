@@ -5,7 +5,7 @@ from ackermann_msgs.msg import AckermannDriveStamped, AckermannDrive
 
 class LidarBasedSteering:
     def __init__(self):
-        rospy.init_node('lidar_based_steering')
+        rospy.init_node('Auto Walk')
 
         self.max_steering_angle = rospy.get_param('~max_steering_angle', 1.0)
         self.max_speed = rospy.get_param('~max_speed', 10.0)
